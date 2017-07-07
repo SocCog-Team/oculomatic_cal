@@ -68,7 +68,7 @@ else
 end;
 
 h0 = figure('Backingstore','off','Name','Ocu calibrate',...
-        'Resize','On', 'Menubar','none','Number','off',...
+        'Resize','On', 'Menubar','none',...
         'Color',gui_bgcol, ...
         'InvertHardcopy','off', ...
         'NumberTitle','off', ...
@@ -374,11 +374,11 @@ set(hcal_val,'String',num2str(C.(param_names{1})));
 		
 		
 		if (StimPos(1,1) - StimPos(2,1)) ~= 0, % calculate horizontal cal
-			[r,xgain,xoffset] = regression([mX1 mX2],[StimPos(1,1) StimPos(2,1)]);
+			[r,xgain,xoffset] = ocu_regression([mX1 mX2],[StimPos(1,1) StimPos(2,1)]);
 			C.cal([1 2]) = [xgain xoffset];
 		end
 		if (StimPos(1,2) - StimPos(2,2)) ~= 0, % calculate vertical cal
-			[r,ygain,yoffset] = regression([mY1 mY2],[StimPos(1,2) StimPos(2,2)]);
+			[r,ygain,yoffset] = ocu_regression([mY1 mY2],[StimPos(1,2) StimPos(2,2)]);
 			C.cal([3 4]) = [ygain yoffset];
 		end
 		select_cal_param_Callback;
@@ -478,7 +478,7 @@ set(hcal_val,'String',num2str(C.(param_names{1})));
 		
 		% Use realtime priority for better timing precision:
 		priorityLevel=MaxPriority(w);
-		Priority(priorityLevel);
+		% Priority(priorityLevel);
 		
 		HideCursor; 
 
@@ -492,7 +492,7 @@ set(hcal_val,'String',num2str(C.(param_names{1})));
 		StimEndTime = GetSecs;
 		
 		
-		Priority(0);
+		% Priority(0);
 		Screen('Close');
 		sca;
 		ShowCursor;
