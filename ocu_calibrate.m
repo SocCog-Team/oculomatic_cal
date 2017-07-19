@@ -457,7 +457,7 @@ set(hcal_val,'String',num2str(C.(param_names{1})));
 	function Present_stimuli_Callback(hObject,eventdata)
 			
 		screens=Screen('Screens');
-		screenNumber=max(screens);
+		screenNumber=1; %max(screens);
 	
 		white=WhiteIndex(screenNumber);
 		black=BlackIndex(screenNumber);
