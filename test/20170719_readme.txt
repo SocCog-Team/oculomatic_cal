@@ -1,0 +1,6 @@
+bin files:
+
+1: target 10 10
+2: target 10 10
+3: target -10 -10
+4: target 10 10
